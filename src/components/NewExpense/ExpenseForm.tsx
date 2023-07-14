@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
+import { SetStateAction, useState } from 'react';
+import { Expense } from '../../interfaces/expenses';
 import './ExpenseForm.css';
 
-export const ExpenseForm = (props) => {
+export const ExpenseForm = (props: { onSaveExpenseData: (arg0: Expense) => void; }) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
 
-    const titleChangeHandler = (event) => {
+    const titleChangeHandler = (event: { target: { value: SetStateAction<string>; }; }) => {
         setEnteredTitle(event.target.value);
     };
 
-    const amountChangeHandler = (event) => {
+    const amountChangeHandler = (event: { target: { value: SetStateAction<string>; }; }) => {
         setEnteredAmount(event.target.value);
     };
 
-    const dateChangeHandler = (event) => {
+    const dateChangeHandler = (event: { target: { value: SetStateAction<string>; }; }) => {
         setEnteredDate(event.target.value);
     };
 
-    const submitHandler = (event) => {
+    const submitHandler = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
-        const expenseData = {
+        const expenseData: Expense = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: parseInt(enteredAmount),
             date: new Date(enteredDate),
         };
 

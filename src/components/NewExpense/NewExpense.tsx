@@ -1,12 +1,12 @@
-import React from 'react';
 import './NewExpense.css';
 import { ExpenseForm } from './ExpenseForm';
-const NewExpense = (props) => {
+import { Expense } from '../../interfaces/expenses';
+const NewExpense = (props: { onAddExpense: (arg0: Expense) => void; }) => {
 
-  const saveExpenseDataHandler = (enteredExpenseData) => {
+  const saveExpenseDataHandler = (enteredExpenseData: Expense) => {
     const expenseData = {
       ...enteredExpenseData,
-      id: Math.random().toString(),
+      id: Math.random(),
     };
 
     props.onAddExpense(expenseData);

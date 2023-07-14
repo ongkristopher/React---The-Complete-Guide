@@ -1,8 +1,10 @@
-import { SetStateAction, useState } from 'react';
+import { MouseEventHandler, SetStateAction, useState } from 'react';
 import { Expense } from '../../interfaces/expenses';
 import './ExpenseForm.css';
 
-export const ExpenseForm = (props: { onSaveExpenseData: (arg0: Expense) => void; }) => {
+export const ExpenseForm = (props: {
+    onCancel: MouseEventHandler<HTMLButtonElement>; onSaveExpenseData: (arg0: Expense) => void;
+}) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -52,6 +54,7 @@ export const ExpenseForm = (props: { onSaveExpenseData: (arg0: Expense) => void;
                 </div>
             </div>
             <div className='new-expense__actions'>
+                <button type='button' onClick={props.onCancel}>Cancel</button>
                 <button type='submit'>Add Expense</button>
             </div>
         </form>

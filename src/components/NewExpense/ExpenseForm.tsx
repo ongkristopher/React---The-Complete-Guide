@@ -26,7 +26,7 @@ export const ExpenseForm = (props: {
 
         const expenseData: Expense = {
             title: enteredTitle,
-            amount: parseInt(enteredAmount),
+            amount: +enteredAmount,
             date: new Date(enteredDate),
         };
 
